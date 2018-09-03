@@ -9,5 +9,8 @@
 import UIKit
 
 class MainCollectionViewCell: UICollectionViewCell {
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var subTitleLabel: UILabel!
+    @IBOutlet var imageView: UIImageView!
     
 }
