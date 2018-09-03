@@ -11,6 +11,7 @@ import UIKit
 
 struct CellViewModel {
     let image: UIImage
+
 }
 
 class MainViewModel {
