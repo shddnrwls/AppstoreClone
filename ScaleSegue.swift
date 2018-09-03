@@ -21,7 +21,7 @@ class ScaleSegue: UIStoryboardSegue {
         let containerView = fromViewControeller.view.superview
         let originalCenter = fromViewControeller.view.center
         
-        toViewController.view.transform = CGAffineTransform(scaleX: 0.05, y: 0.05)
+        toViewController.view.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
         toViewController.view.center = originalCenter
         
         containerView?.addSubview(toViewController.view)
@@ -36,3 +36,5 @@ class ScaleSegue: UIStoryboardSegue {
     }
 
 }
+
+

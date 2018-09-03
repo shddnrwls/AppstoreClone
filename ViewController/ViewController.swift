@@ -47,8 +47,8 @@ class ViewController: UIViewController {
 extension ViewController: UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.cellViewModels.count
-        
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCell", for: indexPath) as! MainCollectionViewCell
         let image = viewModel.cellViewModels[indexPath.row].image
@@ -57,6 +57,7 @@ extension ViewController: UICollectionViewDelegate,UICollectionViewDataSource{
         cell.titleLabel.text = titleArr[0]
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "CellDetailViewController") as! CellDetailViewController
         let image = viewModel.cellViewModels[indexPath.row].image
