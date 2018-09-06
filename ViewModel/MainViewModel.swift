@@ -23,12 +23,20 @@ class MainViewModel {
     }
     var cellViewModels: [CellViewModel] = []
     
+    var isLoading: Bool = false {
+        didSet{
+            showLoading?()
+        }
+    }
+    
     var reloadData: (() -> Void)?
     var showError: ((Error) -> Void)?
     
     init(client: APIClient) {
         self.client = client
     }
+    var showLoading: (()-> Void)?
+    
     func fetchPhotos() {
         if let client = client as? UnsplashClient {
             let endpoint = UnspashEndpoint.photos(id: UnsplashClient.apiKey, order: .latest)
@@ -64,6 +72,7 @@ class MainViewModel {
         }
         
         group.notify(queue: .main) {
+            self.isLoading = false
             self.reloadData?()
         }
     }

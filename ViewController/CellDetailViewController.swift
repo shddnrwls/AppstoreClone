@@ -15,7 +15,6 @@ class CellDetailViewController: UIViewController {
     var images = UIImage()
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(images)
         imageView.image = images
 
         // Do any additional setup after loading the view.

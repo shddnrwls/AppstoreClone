@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     let titleArr = ["컬렉션","게임","오늘의 앱"]
     let subTitleArr = ["관람차를 타보자!","쉐프 우마미","북맹 - 도서분석"]
@@ -20,6 +21,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        viewModel.showLoading = {
+            if self.viewModel.isLoading {
+                self.activityIndicator.startAnimating()
+                self.activityIndicator.alpha = 0.0
+            } else {
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.alpha = 1.0
+            }
+            
+        }
         viewModel.showError = { error in
             print(error)
         }
@@ -62,8 +74,9 @@ extension ViewController: UICollectionViewDelegate,UICollectionViewDataSource{
         let vc = storyboard?.instantiateViewController(withIdentifier: "CellDetailViewController") as! CellDetailViewController
         let image = viewModel.cellViewModels[indexPath.row].image
         vc.images = image
-        print(vc.images)
-        performSegue(withIdentifier: "VC", sender: self)
+        present(vc,animated: true,completion: nil)
+        
+//        performSegue(withIdentifier: "VC", sender: self)
     }
 
 }

@@ -11,9 +11,7 @@ import UIKit
 class ScaleSegue: UIStoryboardSegue {
     override func perform() {
         scale()
-        
     }
-    
     func scale() {
         let toViewController = self.destination
         let fromViewControeller = self.source
@@ -23,7 +21,6 @@ class ScaleSegue: UIStoryboardSegue {
         
         toViewController.view.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
         toViewController.view.center = originalCenter
-        
         containerView?.addSubview(toViewController.view)
         
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
@@ -31,8 +28,6 @@ class ScaleSegue: UIStoryboardSegue {
         }, completion: { success in
             fromViewControeller.present(toViewController, animated: false,completion: nil)
         })
-        
-        
     }
 
 }
